@@ -1,0 +1,41 @@
+Branch Office - Cascading
+Date Preselect
+1)
+Name - Title | First Name | Last Name
+Short Name - 
+Address
+Nationality
+Are you resident in India 
+Father’s Name in full 
+Personal Details
+Contact Details
+2) 
+Date of Birth
+Policy 
+Years - Depends on Policy
+Age Proof
+
+3)Nominees 
+Full Name
+Full Address
+Relationship to the Nominee 
+DOB
+Contact details
+
+4)
+Occupation Details
+Annual Income
+
+
+5) 
+Date prefilled 
+Location 
+
+I hereby declare that I have fully explained the
+Above questions to the proposer in 
+(language) and I have truthfully recorded the
+answers and explained to the proposer and that
+the proposer has affixed his/her thumb
+impression to the proposal form after duly
+understanding the contents thereof.
+

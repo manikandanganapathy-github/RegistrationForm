@@ -1,20 +1,46 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>{{title}}</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-card>
+    <mat-card-title>Personal Details</mat-card-title>
+    <!-- Branch Office -->
+    <!-- Date Preselect -->
+    <mat-form-field>
+        <mat-select placeholder="Mr/Miss/Mrs">
+            <mat-option *ngFor="let title of titles" [value]="title.value">
+                {{ title.viewValue }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="firstName" placeholder="First Name" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="lastName" placeholder="Last Name" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="shortName" placeholder="Short Name" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="addressPartOne" placeholder="Address Field 1" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="addressPartTwo" placeholder="Address Field 2" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="addressPartThree" placeholder="Address Field 3" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <mat-select placeholder="Nationality">
+            <mat-option *ngFor="let nation of nations" [value]="nation.value">
+                {{nation.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+</mat-card>
