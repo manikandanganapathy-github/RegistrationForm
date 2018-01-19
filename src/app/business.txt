@@ -7,7 +7,7 @@ Address
 Nationality
 Are you resident in India 
 Father’s Name in full 
-Personal Details
+Personal Details <fill in>
 Contact Details
 2) 
 Date of Birth
