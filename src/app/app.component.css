@@ -1,0 +1,18 @@
+.policy-radio-button {
+    padding-right: 1%;
+}
+
+.policy-select-gender,
+.policy-radio-button {
+    margin-left: 2%;
+}
+
+.policy-input-email {
+    margin-left: 4%;
+    width: 20%;
+}
+
+.policy-button-print,
+.policy-button-clear {
+    margin-left: 20%;
+}

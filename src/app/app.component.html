@@ -15,24 +15,24 @@
         </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <input matInput [(ngModel)]="firstName" placeholder="First Name" />
+        <input matInput [(ngModel)]="firstName" placeholder="First name" />
     </mat-form-field>
     <mat-form-field>
-        <input matInput [(ngModel)]="lastName" placeholder="Last Name" />
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-        <input matInput [(ngModel)]="shortName" placeholder="Short Name" />
+        <input matInput [(ngModel)]="lastName" placeholder="Last name" />
     </mat-form-field>
     <br/>
     <mat-form-field>
-        <input matInput [(ngModel)]="addressPartOne" placeholder="Address Field 1" />
+        <input matInput [(ngModel)]="shortName" value={{firstName}} placeholder="Short name" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="address" placeholder="Address" />
     </mat-form-field>
     <mat-form-field>
-        <input matInput [(ngModel)]="addressPartTwo" placeholder="Address Field 2" />
+        <input matInput [(ngModel)]="city" placeholder="City" />
     </mat-form-field>
     <mat-form-field>
-        <input matInput [(ngModel)]="addressPartThree" placeholder="Address Field 3" />
+        <input matInput [(ngModel)]="state" placeholder="State" />
     </mat-form-field>
     <br/>
     <mat-form-field>
@@ -43,4 +43,40 @@
         </mat-select>
     </mat-form-field>
     <br/>
+    <label>Are you resident in India ?</label>
+    <mat-radio-group class="policy-radio-group" [(ngModel)]="isResidentIND">
+        <mat-radio-button class="policy-radio-button" *ngFor="let option of residentOption" [value]="option">
+            {{option}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="fatherName" placeholder="Father’s name " />
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="policy-full-width">
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="policy-select-gender">
+        <mat-select placeholder="Gender">
+            <mat-option *ngFor="let gender of genderOption" [value]="gender.value">
+                {{gender.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <mat-label>Phone number</mat-label>
+        <input matInput [(ngModel)]="phoneNumber" placeholder="+91 XXXXX XXXXX" />
+    </mat-form-field>
+    <mat-form-field class="policy-input-email">
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button (click)="submitPolicy()" color="primary">Submit</button>
+    <button mat-raised-button (click)="downPolicy()" class="policy-button-print" color="warn">Download</button>
+    <button mat-raised-button (click)="resetPolicy()" class="policy-button-clear" color="accent">Clear</button>
 </mat-card>
