@@ -48,3 +48,5 @@ $("#dvjson").excelexportjs({
                 });
 
                 http://snack-x.github.io/excelexport.js/
+
+                how to use third party library in angular 4
