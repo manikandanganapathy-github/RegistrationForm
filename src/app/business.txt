@@ -46,3 +46,5 @@ $("#dvjson").excelexportjs({
                     dataset: response.Items,
                     columns: getColumns(response.Items)
                 });
+
+                http://snack-x.github.io/excelexport.js/
