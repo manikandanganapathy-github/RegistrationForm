@@ -39,3 +39,10 @@ the proposer has affixed his/her thumb
 impression to the proposal form after duly
 understanding the contents thereof.
 
+
+$("#dvjson").excelexportjs({
+                    containerid: "dvjson",
+                    datatype: 'json',
+                    dataset: response.Items,
+                    columns: getColumns(response.Items)
+                });
