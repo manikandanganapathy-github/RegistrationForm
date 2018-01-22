@@ -77,6 +77,11 @@
     </mat-form-field>
     <br/>
     <button mat-raised-button (click)="submitPolicy()" color="primary">Submit</button>
-    <button mat-raised-button (click)="downPolicy()" class="policy-button-print" color="warn">Download</button>
+    <button mat-raised-button (click)="downPolicy()" [matMenuTriggerFor]="downloadOptions" class="policy-button-print" color="warn">Download</button>
+    <mat-menu #downloadOptions="matMenu">
+        <button mat-menu-item> Excel </button>
+        <button mat-menu-item> JSON </button>
+    </mat-menu>
+
     <button mat-raised-button (click)="resetPolicy()" class="policy-button-clear" color="accent">Clear</button>
 </mat-card>
