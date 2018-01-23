@@ -2,6 +2,10 @@
     padding-right: 1%;
 }
 
+.policy-radio-group {
+    margin-left: 1.5%;
+}
+
 .policy-select-gender,
 .policy-radio-button {
     margin-left: 2%;

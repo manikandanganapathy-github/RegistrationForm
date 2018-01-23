@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PersonalDetailModel } from './personaldetail.model';
 @Component({
   selector: 'app-root',
@@ -7,6 +7,7 @@ import { PersonalDetailModel } from './personaldetail.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isDisabled = false;
    model: any = {};
    personalDetailModel: PersonalDetailModel;
   title= 'Policy Registration';
@@ -43,10 +44,10 @@ export class AppComponent {
             '';
   }
   submitPolicy(): void {
+    this.isDisabled = true;
     this.personalDetailModel = this.model;
   }
   downloadPolicy(option: string): void {
-    console.log('option ', option);
     if (option === 'JSON') {
     const element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.personalDetailModel)));
@@ -56,6 +57,38 @@ export class AppComponent {
     element.click();
     document.body.removeChild(element);
     }
+  }
+
+  resetPolicy(): void {
+    this.model.title = '';
+    this.model.firstName = '';
+    this.model.lastName = '';
+    this.model.address = '';
+    this.model.city = '';
+    this.model.state = '';
+    this.model.nationality = '';
+    this.model.isResidentIND = '';
+    this.model.fatherName = '';
+    this.model.doB = '';
+    this.model.phoneNumber = '';
+    this.model.email = '';
+  }
+  printPolicy(): void {
+   let printContents, popupWin;
+    printContents = document.getElementById('print-section').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Print tab</title>
+          <style>
+          </style>
+        </head>
+    <body onload="window.print();window.close()">${printContents}</body>
+      </html>`
+    );
+    popupWin.document.close();
   }
 }
 
