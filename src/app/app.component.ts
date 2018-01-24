@@ -1,4 +1,4 @@
-const jsPDF = require('jspdf');
+declare var jsPDF = require('jspdf');
 require('jspdf-autotable');
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -114,7 +114,7 @@ return header;
     }
     doc.autoTable(col, rows);
     doc.autoPrint();
-    doc.save(this.personalDetailModel.firstName + '-' + this.personalDetailModel.phoneNumber + '.pdf', self);
+    doc.save(this.personalDetailModel.firstName + '-' + this.personalDetailModel.phoneNumber + '.pdf');
   }
 }
 
