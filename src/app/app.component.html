@@ -3,87 +3,85 @@
         <span>{{title}}</span>
     </mat-toolbar-row>
 </mat-toolbar>
-<div id="print-section">
-    <mat-card>
-        <mat-card-title>Personal Details</mat-card-title>
-        <!-- Branch Office -->
-        <!-- Date Preselect -->
-        <mat-form-field>
-            <mat-select placeholder="Mr/Miss/Mrs" [(ngModel)]="model.title">
-                <mat-option *ngFor="let title of titles" [value]="title.value">
-                    {{ title.viewValue }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.firstName" placeholder="First name" />
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.lastName" placeholder="Last name" />
-        </mat-form-field>
-        <br/>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.shortName" value={{model.firstName}} placeholder="Short name" />
-        </mat-form-field>
-        <br/>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.address" placeholder="Address" />
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.city" placeholder="City" />
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.state" placeholder="State" />
-        </mat-form-field>
-        <br/>
-        <mat-form-field>
-            <mat-select placeholder="Nationality" [(ngModel)]="model.nationality">
-                <mat-option *ngFor="let nation of nations" [value]="nation.value">
-                    {{nation.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br/>
-        <label>Are you resident in India ?</label>
-        <mat-radio-group class="policy-radio-group" [(ngModel)]="model.isResidentIND">
-            <mat-radio-button class="policy-radio-button" *ngFor="let option of residentOption" [value]="option">
-                {{option}}
-            </mat-radio-button>
-        </mat-radio-group>
-        <br/>
-        <mat-form-field>
-            <input matInput [(ngModel)]="model.fatherName" placeholder="Father’s name " />
-        </mat-form-field>
-        <br/>
-        <mat-form-field class="policy-full-width">
-            <input matInput [matDatepicker]="picker" [(ngModel)]="model.doB" placeholder="Date of Birth">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi="true" #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="policy-select-gender">
-            <mat-select placeholder="Gender" [(ngModel)]="model.gender">
-                <mat-option *ngFor="let gender of genderOption" [value]="gender.value">
-                    {{gender.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br/>
-        <mat-form-field>
-            <mat-label>Phone number</mat-label>
-            <input matInput [(ngModel)]="model.phoneNumber" placeholder="+91 XXXXX XXXXX" />
-        </mat-form-field>
-        <mat-form-field class="policy-input-email">
-            <input matInput placeholder="Enter your email" [(ngModel)]="model.email" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-        <br/>
-        <button mat-raised-button [disabled]="isDisabled" (click)="submitPolicy()" color="primary">Submit</button>
-        <button mat-raised-button [matMenuTriggerFor]="downloadOptions" class="policy-button-print" color="warn">Download</button>
-        <mat-menu #downloadOptions="matMenu">
-            <button mat-menu-item (click)="downloadPolicy('Excel')"> Excel </button>
-            <button mat-menu-item (click)="downloadPolicy('JSON')"> JSON </button>
-        </mat-menu>
-        <button mat-raised-button (click)="resetPolicy()" class="policy-button-clear" color="accent">Reset</button>
-        <button mat-raised-button (click)="printPolicy()" class="policy-button-print">Print</button>
-    </mat-card>
-</div>
+<mat-card>
+    <mat-card-title>Personal Details</mat-card-title>
+    <!-- Branch Office -->
+    <!-- Date Preselect -->
+    <mat-form-field>
+        <mat-select placeholder="Mr/Miss/Mrs" [disabled]="isReadOnlyField" [(ngModel)]="model.title">
+            <mat-option *ngFor="let title of titles" [value]="title.value">
+                {{ title.viewValue }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.firstName" [readonly]="isReadOnlyField" placeholder="First name" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.lastName" [readonly]="isReadOnlyField" placeholder="Last name" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.shortName" [readonly]="isReadOnlyField" value={{model.firstName}} placeholder="Short name" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.address" [readonly]="isReadOnlyField" placeholder="Address" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.city" [readonly]="isReadOnlyField" placeholder="City" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.state" [readonly]="isReadOnlyField" placeholder="State" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <mat-select placeholder="Nationality" [disabled]="isReadOnlyField" [(ngModel)]="model.nationality">
+            <mat-option *ngFor="let nation of nations" [value]="nation.value">
+                {{nation.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <label>Are you resident in India ?</label>
+    <mat-radio-group class="policy-radio-group" [disabled]="isReadOnlyField" [(ngModel)]="model.isResidentIND">
+        <mat-radio-button class="policy-radio-button" *ngFor="let option of residentOption" [value]="option">
+            {{option}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <br/>
+    <mat-form-field>
+        <input matInput [(ngModel)]="model.fatherName" [readonly]="isReadOnlyField" placeholder="Father’s name " />
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="policy-full-width">
+        <input matInput [matDatepicker]="picker" [disabled]="isReadOnlyField" [(ngModel)]="model.doB" placeholder="Date of Birth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="policy-select-gender">
+        <mat-select placeholder="Gender" [disabled]="isReadOnlyField" [(ngModel)]="model.gender">
+            <mat-option *ngFor="let gender of genderOption" [value]="gender.value">
+                {{gender.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <mat-label>Phone number</mat-label>
+        <input matInput [(ngModel)]="model.phoneNumber" [readonly]="isReadOnlyField" placeholder="+91 XXXXX XXXXX" />
+    </mat-form-field>
+    <mat-form-field class="policy-input-email">
+        <input matInput placeholder="Enter your email" [readonly]="isReadOnlyField" [(ngModel)]="model.email" [formControl]="email">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button [disabled]="isSubmitDisabled" (click)="submitPolicy()" color="primary">Submit</button>
+    <button mat-raised-button [disabled]="isDownloadDisabled" [matMenuTriggerFor]="downloadOptions" class="policy-button-print" color="warn">Download</button>
+    <mat-menu #downloadOptions="matMenu">
+        <button mat-menu-item (click)="downloadPolicy('Excel')"> Excel </button>
+        <button mat-menu-item (click)="downloadPolicy('JSON')"> JSON </button>
+    </mat-menu>
+    <button mat-raised-button (click)="resetPolicy()" class="policy-button-clear" color="accent">Reset</button>
+    <button mat-raised-button [disabled]="isDownloadDisabled" (click)="printPolicy()" class="policy-button-print">Print</button>
+</mat-card>

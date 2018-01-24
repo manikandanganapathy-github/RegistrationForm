@@ -9,11 +9,11 @@ import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
     imports: [ MatButtonModule, MatToolbarModule, MatInputModule, MatRadioModule,
          MatProgressSpinnerModule, MatCardModule, MatSelectModule, MatFormFieldModule,
-         MatDatepickerModule, MatNativeDateModule, MatMenuModule,
+         MatDatepickerModule, MatNativeDateModule, MatMenuModule
           ],
     exports: [ MatButtonModule, MatToolbarModule, MatRadioModule,
          MatInputModule, MatProgressSpinnerModule, MatCardModule, MatSelectModule,
-          MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatMenuModule,
+          MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatMenuModule
             ]
 })
 export class MaterialModule { }
