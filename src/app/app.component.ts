@@ -19,8 +19,6 @@ export class AppComponent {
    model: any = {};
    personalDetailModel: PersonalDetailModel;
   title= 'Policy Registration';
-  constructor() {
-  }
   titles= [{
     value: 'mr', viewValue: 'Mr'
   }, {
