@@ -8,7 +8,7 @@
     <!-- Branch Office -->
     <!-- Date Preselect -->
     <mat-form-field>
-        <mat-select placeholder="Mr/Miss/Mrs" [disabled]="isReadOnlyField" [(ngModel)]="model.title">
+        <mat-select placeholder="Mr/Miss/Mrs" (change)="affectGender()" [disabled]="isReadOnlyField" [(ngModel)]="model.title">
             <mat-option *ngFor="let title of titles" [value]="title.value">
                 {{ title.viewValue }}
             </mat-option>

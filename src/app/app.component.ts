@@ -1,11 +1,9 @@
-declare var jsPDF = require('jspdf');
-require('jspdf-autotable');
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PersonalDetailModel } from './personaldetail.model';
 declare var jquery: any;
 declare var $: any;
-
+declare var jsPDF: any;
 
 @Component({
   selector: 'app-root',
@@ -101,7 +99,14 @@ return header;
     this.isSubmitDisabled = false;
     this.isDownloadDisabled = true;
   }
-
+  affectGender(): void {
+    if (this.model.title === 'miss' || this.model.title === 'mrs' ){
+      this.model.gender = 'female';
+    }
+    if (this.model.title === 'mr') {
+      this.model.gender = 'male';
+    }
+  }
   printPolicy(): void {
      const item = this.personalDetailModel;
     const doc = new jsPDF();
