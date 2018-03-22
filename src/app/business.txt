@@ -52,3 +52,50 @@ $("#dvjson").excelexportjs({
                 how to use third party library in angular 4
 
 https://www.djamware.com/post/5a0673c880aca7739224ee21/mean-stack-angular-5-crud-web-application-example
+
+	
+	
+	function doit(type, fn, dl) {
+			var filename="test";
+			var elt = document.getElementById('data-table');
+			var wb = XLSX.utils.table_to_book(elt, {
+				sheet: "Workbook"
+			});
+			return dl ?
+				XLSX.write(wb, {
+					bookType: type,
+					bookSST: true,
+					type: 'base64'
+				}) :
+				XLSX.writeFile(wb, fn || (filename + '.' + (type || 'xlsx')));
+	}
+  
+	var data = [{"ID":"1518045462388","UserID":9482835,"ClassID":618450,"Gender":"Female","Age":"19","DateTaken":"2/7/2018","IV1":1,"DV1":"3"},{"ID":"1518213542354","UserID":9167694,"ClassID":902842,"Gender":"Male","Age":"36","DateTaken":"2/9/2018","IV1":2,"DV1":"4"},{"ID":"1518556758769","UserID":9167694,"ClassID":902842,"Gender":"Male","Age":"36","DateTaken":"2/13/2018","IV1":1,"DV1":"4"},{"ID":"1517464107026","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/1/2018","IV1":1,"DV1":"4"},{"ID":"1517464460187","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/1/2018","IV1":2,"DV1":"4"},{"ID":"1517493370115","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/1/2018","IV1":2,"DV1":"4"},{"ID":"1517566800972","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/2/2018","IV1":1,"DV1":"4"},{"ID":"1517587317311","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/2/2018","IV1":1,"DV1":"4"},{"ID":"1517898583157","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/6/2018","IV1":1,"DV1":"4"},{"ID":"1518092793511","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"25","DateTaken":"2/8/2018","IV1":3,"DV1":"4"},{"ID":"1518186597077","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"33","DateTaken":"2/9/2018","IV1":3,"DV1":"4"},{"ID":"1518445333074","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"33","DateTaken":"2/12/2018","IV1":3,"DV1":"5"},{"ID":"1518618490138","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/14/2018","IV1":2,"DV1":"3"},{"ID":"1518619230362","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/14/2018","IV1":1,"DV1":"4"},{"ID":"1519132214311","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/20/2018","IV1":3,"DV1":"5"},{"ID":"1519707945738","UserID":9886210,"ClassID":618450,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":1,"DV1":"6"},{"ID":"1519711284058","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":1,"DV1":"4"},{"ID":"1519721753157","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":1,"DV1":"4"},{"ID":"1519723425471","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":2,"DV1":"5"},{"ID":"1519723518925","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":1,"DV1":"5"},{"ID":"1519727193889","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":2,"DV1":"4"},{"ID":"1519727228730","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":2,"DV1":"4"},{"ID":"1519727332131","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/27/2018","IV1":2,"DV1":"4"},{"ID":"1519800418396","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"2/28/2018","IV1":2,"DV1":"5"},{"ID":"1520515738420","UserID":9886210,"ClassID":902842,"Gender":"Male","Age":"44","DateTaken":"3/8/2018","IV1":3,"DV1":"4"},{"ID":"1517485560426","UserID":9886205,"ClassID":902842,"Gender":"Female","Age":"14","DateTaken":"2/1/2018","IV1":2,"DV1":"4"},{"ID":"1518092189834","UserID":9886205,"ClassID":902842,"Gender":"Female","Age":"14","DateTaken":"2/8/2018","IV1":2,"DV1":"4"}];
+	if (data.length == 0)
+		data = [{
+			"NoRecord Found": ""
+		}];
+	var count = 0;
+	var aoa = [];
+	var arr = [],
+		key = [],
+		sample = [];
+	for (var i = 0; i < data.length; i++) {
+		count++;
+		for (var prop in data[i]) {
+			key.push(prop);
+			arr.push(data[i][prop]);
+		}
+		if (count == 1)
+			aoa.push(key);
+		aoa.push(arr);
+		arr = [];
+		key = [];
+	}
+	var ws = XLSX.utils.aoa_to_sheet(aoa);
+	var html_string = XLSX.utils.sheet_to_html(ws, {
+		id: "data-table",
+		editable: true
+	});
+	document.getElementById("dataTable").innerHTML = html_string;
+	doit();
