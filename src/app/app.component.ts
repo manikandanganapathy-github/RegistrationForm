@@ -100,7 +100,7 @@ return header;
     this.isDownloadDisabled = true;
   }
   affectGender(): void {
-    if (this.model.title === 'miss' || this.model.title === 'mrs' ){
+    if (this.model.title === 'miss' || this.model.title === 'mrs' ) {
       this.model.gender = 'female';
     }
     if (this.model.title === 'mr') {
