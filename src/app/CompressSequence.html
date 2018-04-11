@@ -1,0 +1,28 @@
+<!doctype html>
+<head>
+<title>Compress Number Sequence</title>
+</head>
+<body>
+
+<script>
+var inputStr="1,2,3,4,5,6,8,10,11",arrInStr=[],findex,lindex,calSeq,finalOutputArr=[],selectedVal;
+document.write('Input String : ',inputStr);
+arrInStr=inputStr.split(',');
+findex=arrInStr[0];
+for(i=0;i<arrInStr.length;i++){
+  calSeq=arrInStr[i+1]-arrInStr[i];
+  if(calSeq!=1){
+      lindex=arrInStr[i];
+      if(lindex==findex){
+        selectedVal=findex;
+      }else{
+        selectedVal=findex+'-'+lindex;
+      }
+      finalOutputArr.push(selectedVal);
+      findex=arrInStr[i+1];
+  }
+}
+alert("Output : "+finalOutputArr)
+</script>
+</body>
+</html>
