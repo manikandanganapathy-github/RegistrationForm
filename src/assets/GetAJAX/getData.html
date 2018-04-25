@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+<title>Sample Stuff</title>
+</head>
+<body>
+
+
+<script src="./jquery.min.js"></script>
+<script>
+  var i=1;
+$.get( "https://01yvtki35d.execute-api.us-east-1.amazonaws.com/dev/oplManagementFunction?TableName=ExperimentParticipants", function( data ) {
+  console.info('Map');
+  console.info('====');
+  var task_names = data.Items.map(function (Item, index, array) {
+      console.info('User '+(index+1)+' : '+Item.expName);
+  });
+console.info('Filter');
+console.info('====');
+  var difficult_tasks = data.Items.filter(function (Item,index) {
+    if(Item.IsExpFinished == 1){
+      console.info('User '+(i++)+' : '+Item.expName);
+    }
+});
+console.info('Reduce');
+console.info('====');
+var total = [1, 2, 3, 4, 5].reduce(function (previous, current, index) {
+    var val = previous + current;
+    console.log("The previous value is " + previous +
+                "; the current value is " + current +
+                ", and the current iteration is " + (index + 1));
+    return val;
+}, 0);
+
+console.log("The loop is done, and the final value is " + total + ".");
+
+
+});
+</script>
+</body>
+</html>
